@@ -1,0 +1,132 @@
+
+
+
+/* --------NavBar------- */
+.menu_open{
+    display: flex;
+    justify-content: flex-end;
+    /* height: auto; */
+    max-width: auto;
+    background-color:var(--bg-color);
+    padding-left: 3px;
+    max-height: 500px;
+    /* transition: max-height 0.5s ease; */
+}
+
+.menu_close{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 3px;
+    max-width: auto;
+    background-color: var(--bg-color);
+    height: 55px;
+    max-height: 55px;
+
+}
+
+.hamburguer_icon{
+    fill:var(--text-color);
+    position: absolute;
+    right: 8px;
+    background-color: var(--bg-color-ico);
+    width: 32px;
+    border-radius: 6px;
+    top: 12px;
+}
+
+.hamburguesa_h1{
+    position: absolute;
+    font-size: 1.4em;
+    min-width: 150px;
+    top: 0;
+}
+
+.menu_close_bottom{
+    display:none;
+}
+
+.menu_close ul li{
+    display:none;
+}
+
+.list_container{
+    padding-left: 3px;
+    width: 100%;
+    margin-top:50px;
+    color:var(--text-color);
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
+
+}
+
+.list_container ul{
+    list-style: none;
+}
+
+.navbar_ul{
+    padding-left: 3px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 15px;
+}
+
+.card button{
+    padding-left: 0px;
+    padding: 4px 0;
+    background-color: transparent;
+    border: none;
+    color:var(--text-color);
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.dropdown_close{
+    display:none;
+}
+
+.navbar_ul button{
+    padding: 4px 0;
+    padding-left: 0px;
+    background-color: transparent;
+    border: none;
+    color:var(--text-color);
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+/* --------Fin NavBar------- */
+
+
+/* --------Media query-------- */
+
+@media (min-width: 768px) { 
+    .menu_close{
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 3px;
+        background-color: red;
+        height: 55px;
+        max-height: 55px;
+        transition: max-height 0.5s ease;
+    }
+
+}
+
+@media (min-width: 1024px) { 
+    .menu_close{
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 3px;
+        background-color: brown;
+        height: 55px;
+        max-height: 55px;
+        transition: max-height 0.5s ease;
+    }
+}
