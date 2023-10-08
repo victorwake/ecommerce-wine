@@ -1,15 +1,21 @@
 // eslint-disable-next-line
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from "react-i18next";
 import style from "./navbar.module.css";
-import Hamburguer from "../assets/svgComponents/hamburguer";
+import Hamburguer from "../../assets/svgComponents/hamburguer";
+import Flecha from "../../assets/svgComponents/flecha";
+import SearchBar from '../searchBar/SearchBar'
+import {isOpenNavBar} from '../../redux/action/index'
+
 
 export default function NavBar() {
   const [t, i18n] = useTranslation("global");
+  const dispatch = useDispatch()
   const currentLocale = i18n.languages[0];
-  const [isOpen, setIsOpen] = useState(false);
   const [isOpenList, setIsOpenList] = useState(false)
   const [theme, setTheme] = useState("")
+  const isOpen = useSelector((state) => state.isOpen);
 
   const toggleTheme = () => {
     const body = document.body;
@@ -39,10 +45,10 @@ export default function NavBar() {
 
   const showMenu = () => {
     if (isOpen) {
-      setIsOpen(false);
+      dispatch(isOpenNavBar(false))
       setIsOpenList(false);
     } else 
-    setIsOpen(true);
+    dispatch(isOpenNavBar(true))
   };
 
   const showMenuList = () => {
@@ -65,8 +71,9 @@ export default function NavBar() {
             <button >{t("nav.0")}</button>
           </li>
           <li className={style.nav_li}>
-            <button onClick={showMenuList}>{t("nav.1")}</button>
+            <button className={style.btn_lista} onClick={showMenuList}>{t("nav.1")}<Flecha className={isOpenList ? style.flecha_open : style.flecha} /></button>
             <ul className={isOpenList ? style.dropdown_content : style.dropdown_close}>
+            
               <li  className={style.nav_li}>
                 <button >{t("nav.2")}</button>
               </li>
@@ -93,6 +100,9 @@ export default function NavBar() {
         <div className={isOpen ? style.card : style.menu_close_bottom}>
           <button onClick={toggleTheme}>{theme? theme : "Modo light"}</button>
           <button onClick={cambiarTexto}>{t("leng")}</button>
+          <div className={isOpenList ? style.container_search_open : style.container_search}>
+          <SearchBar />
+          </div>
         </div>
       </div>
     </nav>
