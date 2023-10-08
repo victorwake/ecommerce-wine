@@ -13,7 +13,6 @@ export default function NavBar() {
   const [t, i18n] = useTranslation("global");
   const dispatch = useDispatch()
   const currentLocale = i18n.languages[0];
-  // const [isOpenList, setIsOpenList] = useState(false)
   const [theme, setTheme] = useState("")
   const isOpen = useSelector((state) => state.isOpen);
   const isOpenList = useSelector((state) => state.isOpenList)
@@ -47,7 +46,7 @@ export default function NavBar() {
   const showMenu = () => {
     if (isOpen) {
       dispatch(isOpenNavBar(false))
-      setIsOpenList(false);
+      dispatch(openList(false));
     } else 
     dispatch(isOpenNavBar(true))
   };
