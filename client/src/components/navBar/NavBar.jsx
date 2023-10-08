@@ -6,16 +6,17 @@ import style from "./navbar.module.css";
 import Hamburguer from "../../assets/svgComponents/hamburguer";
 import Flecha from "../../assets/svgComponents/flecha";
 import SearchBar from '../searchBar/SearchBar'
-import {isOpenNavBar} from '../../redux/action/index'
+import {isOpenNavBar, openList} from '../../redux/action/index'
 
 
 export default function NavBar() {
   const [t, i18n] = useTranslation("global");
   const dispatch = useDispatch()
   const currentLocale = i18n.languages[0];
-  const [isOpenList, setIsOpenList] = useState(false)
+  // const [isOpenList, setIsOpenList] = useState(false)
   const [theme, setTheme] = useState("")
   const isOpen = useSelector((state) => state.isOpen);
+  const isOpenList = useSelector((state) => state.isOpenList)
 
   const toggleTheme = () => {
     const body = document.body;
@@ -53,8 +54,8 @@ export default function NavBar() {
 
   const showMenuList = () => {
     if (isOpenList) {
-      setIsOpenList(false);
-    } else setIsOpenList(true);
+      dispatch(openList(false));
+    } else dispatch(openList(true));
   };
 
 

@@ -6,6 +6,7 @@ import {
   SEARCH_WINE,
   CLEAN_STATE_BY_NAME,
   IS_OPEN,
+  IS_OPEN_LIST,
 } from "../action/index.js";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   wineByName: [],
   searchWine: false,
   isOpen: false,
+  isOpenList: false,
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -40,6 +42,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isOpen: action.payload,
+      };
+      case IS_OPEN_LIST:
+      return {
+        ...state,
+        isOpenList: action.payload,
       };
     default:
       return state;

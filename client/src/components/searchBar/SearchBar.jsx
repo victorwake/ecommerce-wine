@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {getWinesByName, changeSearchWine, cleanStateByName, isOpenNavBar} from '../../redux/action/index'
+import {getWinesByName, changeSearchWine, cleanStateByName, isOpenNavBar, openList} from '../../redux/action/index'
 import style from './search.module.css'
 
 export default function SearchBar(){
@@ -19,6 +19,7 @@ export default function SearchBar(){
           dispatch(changeSearchWine(true))
           dispatch(cleanStateByName([]))
           dispatch(isOpenNavBar(false))
+          dispatch(openList(false));
         }
       }
 

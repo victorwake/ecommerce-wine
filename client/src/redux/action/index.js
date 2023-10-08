@@ -60,3 +60,11 @@ export const isOpenNavBar = payload => {
 }
 export const IS_OPEN = 'IS_OPEN'
 /*----------------------------------------------*/
+
+export const openList = payload => {
+  return dispatch => {
+    dispatch({ type: IS_OPEN_LIST, payload })
+  }
+}
+export const IS_OPEN_LIST = 'IS_OPEN_LIST'
+/*----------------------------------------------*/
