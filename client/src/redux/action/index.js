@@ -1,11 +1,14 @@
 import axios from 'axios'
 
 const URL_API = import.meta.env.VITE_URL_API
+const VITE_URL_API_ONLINE = import.meta.env.VITE_URL_API_ONLINE
+
+
 
 export const getWines = () => {
     return async dispatch => {
       try {
-        const response = await axios.get(`${URL_API}wines`)
+        const response = await axios.get(`${VITE_URL_API_ONLINE}wines`)
         dispatch({
           type: GET_WINES,
           payload: response.data,
@@ -21,13 +24,13 @@ export const getWines = () => {
 export const getWinesByName = name => {
   return async dispatch => {
     try {
-      const response = await axios.get('http://localhost:3001/wines/?name=' + name)
+      const response = await axios.get(`${VITE_URL_API_ONLINE}wines/?name=${name}`)
       dispatch({
         type: GET_BY_NAME,
         payload: response.data,
       })
     } catch (error) {
-      console.log(error)`${URL_API}wines/?name='${name}`
+      console.log(error)
     }
   }
 }
