@@ -1,6 +1,7 @@
 
 
 .container_card{
+  position: relative;
   display: flex;
   box-shadow: var(--box-shadow);
   border-radius: 5px;
@@ -40,26 +41,29 @@
 .box_varietal h4{
   font-size: 0.8rem;
   margin: 5px 0;
+  color: var(--text-color-card);
 }
 
 .box_winary{
-
+    
 }
 .box_winary h4{
-    font-size: 0.8rem;
+  font-size: 0.8rem;
   margin: 5px 0;
+  color: var(--text-color-card);
 }
 
 .box_price{
+    position: absolute;
     background-color: #ebebebe7;
     border-radius: 3px;
     width: 120px;
     margin-left: 14px;
-
+    bottom: 8px;
 }
 .box_price h4{
     font-size: 1rem;
-    padding: 2px 0;
-    margin: 5px 0;
+    padding: 1px 0;
+    margin: 3px 0;
     color: rgba(255, 0, 0, 0.466);
 }

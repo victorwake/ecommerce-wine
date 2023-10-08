@@ -7,6 +7,7 @@ import Hamburguer from "../../assets/svgComponents/hamburguer";
 import Flecha from "../../assets/svgComponents/flecha";
 import SearchBar from '../searchBar/SearchBar'
 import {isOpenNavBar, openList} from '../../redux/action/index'
+// import { getWines } from "../../redux/action/index";
 
 
 export default function NavBar() {
@@ -22,6 +23,7 @@ export default function NavBar() {
     body.classList.toggle("dark-theme");
     body.classList.contains("dark-theme") ? "dark" : "ligth";
     verificaThema()
+    dispatch(isOpenNavBar(false))
   };
 
   const verificaThema = () =>{
@@ -56,6 +58,11 @@ export default function NavBar() {
       dispatch(openList(false));
     } else dispatch(openList(true));
   };
+
+  // const loadRandomWines = () => {
+  //   dispatch(getWines());
+  // }
+  // onClick={loadRandomWines} 
 
 
   return (
