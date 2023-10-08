@@ -17,6 +17,7 @@
   --text-color: #2d323d;
   --second-bg-color: #2d323d;
   --text-color: #2d323d;
+  --box-shadow: -3px -2px 8px rgba(255, 255, 255, 0.452), 3px 2px 8px rgba(0, 0, 0, 0.26);
 
 }
 
@@ -25,11 +26,12 @@
   --second-bg-color: #2d323d;
   --bg-color-ico: #57575786;
   --text-color: rgba(255, 255, 255, 0.87);
+  --box-shadow: -3px -2px 8px rgb(0, 0, 0), 3px 2px 8px rgba(255, 255, 255, 0.267);
 }
 
 body{
   transition: 1s ease-in-out;
-  background: rgb(62, 115, 131);
+  background-color: var(--bg-color);
   color: var(--text-color);
 }
 

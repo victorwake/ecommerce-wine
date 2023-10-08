@@ -1,0 +1,19 @@
+
+
+
+.box_wines {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 10px;
+    padding-top: 50px;
+}
+
+.card_wines{
+  flex: 0 1 calc(50% - 20px); 
+  padding: 20px;
+  max-width: calc(50% - 20px); 
+  box-sizing: border-box; 
+  margin-bottom: 20px;
+}
