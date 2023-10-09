@@ -28,4 +28,29 @@ const getDbWines = async (req, res, next) => {
   }
 };
 
-module.exports = { getDbWines };
+// ---------------------------------------------------------------------
+
+
+const getColorType = async (req, res) => {
+  let type = req.query.type; 
+
+  let wineTypeFind = winesJson.filter(
+    (el) => el.color_type.toLowerCase() === type.toLowerCase()
+  );
+
+  if (wineTypeFind.length === 0) {
+    return res.status(401).json({
+      msg: `Acción no permitida, indica un color_type que corresponda`,
+    });
+  } else {
+    try {
+      res.status(200).send(wineTypeFind);
+      console.log(wineTypeFind);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  }
+};
+
+
+module.exports = { getDbWines, getColorType };

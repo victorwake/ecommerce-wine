@@ -1,0 +1,68 @@
+
+.container_footer{
+    background-color:var(--bg-color);
+    box-shadow:var(--box-shadow-footer);
+    /* height: 100px; */
+
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/* Estilos para el pie de página (footer) */
+.site-footer {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+  }
+  
+  .site-footer h6 {
+    color: #333;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+  
+  .site-footer p {
+    color: #777;
+    font-size: 14px;
+  }
+  
+  /* Estilos para las listas de enlaces en el pie de página */
+  .footer-links li {
+    padding: 8px 0;
+    display: inline-block;
+  }
+  
+  .footer-links a {
+    color: #777;
+    text-decoration: none;
+  }
+  
+  /* Estilos para el texto de derechos de autor (copyright) */
+  .copyright-text {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  /* Estilos para los íconos sociales */
+  .social-icons {
+    margin-top: 10px;
+  }
+  
+  .social-icons a {
+    color: #333;
+    font-size: 16px;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  
+  /* Estilos para la línea divisoria */
+  hr {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }

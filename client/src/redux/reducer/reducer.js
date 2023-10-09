@@ -3,15 +3,18 @@
 import {
   GET_WINES,
   GET_BY_NAME,
+  GET_WINE_TYPE,
   SEARCH_WINE,
   CLEAN_STATE_BY_NAME,
   IS_OPEN,
   IS_OPEN_LIST,
+  CLEAR_WINE_BY_NAME,
 } from "../action/index.js";
 
 const initialState = {
   wines: [],
   wineByName: [],
+  wineType: [],
   searchWine: false,
   isOpen: false,
   isOpenList: false,
@@ -47,6 +50,17 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isOpenList: action.payload,
+      };
+      case GET_WINE_TYPE:
+      return {
+        ...state,
+        wineType: action.payload,
+      };
+      case 'CLEAR_WINE_BY_NAME':
+      return {
+        ...state,
+        wineByName: [],
+        wineType: [],
       };
     default:
       return state;
