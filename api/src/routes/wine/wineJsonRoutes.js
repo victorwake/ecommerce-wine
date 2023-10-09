@@ -1,10 +1,11 @@
 
 const { Router } = require('express');
 const router = Router();
-const { getDbWines} = require('../../controllers/wine/wineJsonControllers')
+const { getDbWines, getColorType } = require('../../controllers/wine/wineJsonControllers')
 
 
 router.get('/wines', getDbWines);
+router.get('/type', getColorType)
 
 
 module.exports = router;

@@ -11,6 +11,7 @@ export default function Home() {
   const allWines = useSelector((state) => state.wines);
   const wineByName = useSelector((state) => state.wineByName);
   const searchWine = useSelector((state) => state.searchWine);
+  const wineType = useSelector((state) => state.wineType);
   const isOpen = useSelector((state) => state.isOpen);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [randomWines, setRandomWines] = useState([]);
@@ -66,21 +67,36 @@ export default function Home() {
   return (
     <div className={style.box_wines}>
      {imagesLoaded ? (
-      randomWines?.map((w) => (
-          <div key={w.id}>
-            <Card
-              className={style.card_wines}
-              name={w.name}
-              varietal={w.varietal}
-              image={w.image}
-              winery={w.winery}
-              price={`$${w.price}`}
-            />
-          </div>
-        ))
-      ) : (
-        <Loading />
-      )}
+  wineType && wineType.length > 0 && wineByName.length < 1 ? (
+    wineType.map((w) => (
+      <div key={w.id}>
+        <Card
+          className={style.card_wines}
+          name={w.name}
+          varietal={w.varietal}
+          image={w.image}
+          winery={w.winery}
+          price={`$${w.price}`}
+        />
+      </div>
+    ))
+  ) : (
+    randomWines?.map((w) => (
+      <div key={w.id}>
+        <Card
+          className={style.card_wines}
+          name={w.name}
+          varietal={w.varietal}
+          image={w.image}
+          winery={w.winery}
+          price={`$${w.price}`}
+        />
+      </div>
+    ))
+  )
+) : (
+  <Loading />
+)}
     </div>
   );
 }
