@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 const URL_API = import.meta.env.VITE_URL_API
-const VITE_URL_API_ONLINE = import.meta.env.VITE_URL_API_ONLINE
+const URL_API_ONLINE = import.meta.env.VITE_URL_API_ONLINE
 
 
 
 export const getWines = () => {
     return async dispatch => {
       try {
-        const response = await axios.get(`${VITE_URL_API_ONLINE}wines`)
+        const response = await axios.get(`${URL_API_ONLINE}wines`)
         dispatch({
           type: GET_WINES,
           payload: response.data,
@@ -24,7 +24,7 @@ export const getWines = () => {
 export const getWinesByName = name => {
   return async dispatch => {
     try {
-      const response = await axios.get(`${VITE_URL_API_ONLINE}wines/?name=${name}`)
+      const response = await axios.get(`${URL_API_ONLINE}wines/?name=${name}`)
       dispatch({
         type: GET_BY_NAME,
         payload: response.data,
@@ -67,4 +67,26 @@ export const openList = payload => {
   }
 }
 export const IS_OPEN_LIST = 'IS_OPEN_LIST'
+/*----------------------------------------------*/
+
+export const getWineType = type => {
+  return async dispatch => {
+    try {
+      const response = await axios.get(`${URL_API}type?type=${type}`)
+      dispatch({ type: GET_WINE_TYPE, payload: response.data })
+      dispatch(changeCurrentPage(1)) // actualiza el currentPage a 1
+      dispatch(cleanAllFilters()) // resetea los filtros
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+export const GET_WINE_TYPE = 'GET_WINE_TYPE'
+
+/*----------------------------------------------*/
+
+export const clearWineByName = () => ({
+  type: 'CLEAR_WINE_BY_NAME',
+});
+export const CLEAR_WINE_BY_NAME = 'CLEAR_WINE_BY_NAME'
 /*----------------------------------------------*/

@@ -1,56 +1,55 @@
 // eslint-disable-next-line
 import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import style from "./navbar.module.css";
 import Hamburguer from "../../assets/svgComponents/hamburguer";
 import Flecha from "../../assets/svgComponents/flecha";
-import SearchBar from '../searchBar/SearchBar'
-import {isOpenNavBar, openList} from '../../redux/action/index'
+import SearchBar from "../searchBar/SearchBar";
+import { isOpenNavBar, openList, getWineType, clearWineByName } from "../../redux/action/index";
 // import { getWines } from "../../redux/action/index";
-
 
 export default function NavBar() {
   const [t, i18n] = useTranslation("global");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const currentLocale = i18n.languages[0];
-  const [theme, setTheme] = useState("")
+  const [theme, setTheme] = useState("");
   const isOpen = useSelector((state) => state.isOpen);
-  const isOpenList = useSelector((state) => state.isOpenList)
+  const isOpenList = useSelector((state) => state.isOpenList);
 
   const toggleTheme = () => {
     const body = document.body;
     body.classList.toggle("dark-theme");
     body.classList.contains("dark-theme") ? "dark" : "ligth";
-    verificaThema()
-    dispatch(isOpenNavBar(false))
+    verificaThema();
+    dispatch(isOpenNavBar(false));
+    dispatch(openList(false));
   };
 
-  const verificaThema = () =>{
+  const verificaThema = () => {
     const body = document.body;
-    const dark = t('dark')
-    const light = t('light')
-    if (body.classList.contains("dark-theme")){
-      setTheme(light)
-    }else{
-      setTheme(dark)
+    const dark = t("dark");
+    const light = t("light");
+    if (body.classList.contains("dark-theme")) {
+      setTheme(light);
+    } else {
+      setTheme(dark);
     }
-  }
+  };
 
   const cambiarTexto = () => {
     if (currentLocale === "es") {
       i18n.changeLanguage("en");
-      verificaThema()
+      verificaThema();
     } else i18n.changeLanguage("es");
-    verificaThema()
+    verificaThema();
   };
 
   const showMenu = () => {
     if (isOpen) {
-      dispatch(isOpenNavBar(false))
+      dispatch(isOpenNavBar(false));
       dispatch(openList(false));
-    } else 
-    dispatch(isOpenNavBar(true))
+    } else dispatch(isOpenNavBar(true));
   };
 
   const showMenuList = () => {
@@ -59,11 +58,16 @@ export default function NavBar() {
     } else dispatch(openList(true));
   };
 
+  const winrType = () => {
+    const valueType = event.target.value;
+    dispatch(getWineType(valueType));
+    dispatch(clearWineByName())
+  };
+
   // const loadRandomWines = () => {
   //   dispatch(getWines());
   // }
-  // onClick={loadRandomWines} 
-
+  // onClick={loadRandomWines}
 
   return (
     <nav className={isOpen ? style.menu_open : style.menu_close}>
@@ -75,40 +79,58 @@ export default function NavBar() {
       <div className={style.list_container}>
         <ul className={style.navbar_ul} id="my_navbar_collapse">
           <li className={style.nav_li}>
-            <button >{t("nav.0")}</button>
+            <button>{t("nav.0")}</button>
           </li>
           <li className={style.nav_li}>
-            <button className={style.btn_lista} onClick={showMenuList}>{t("nav.1")}<Flecha className={isOpenList ? style.flecha_open : style.flecha} /></button>
-            <ul className={isOpenList ? style.dropdown_content : style.dropdown_close}>
-            
-              <li  className={style.nav_li}>
-                <button >{t("nav.2")}</button>
+            <button className={style.btn_lista} onClick={showMenuList}>
+              {t("nav.1")}
+              <Flecha
+                className={isOpenList ? style.flecha_open : style.flecha}
+              />
+            </button>
+            <ul
+              className={
+                isOpenList ? style.dropdown_content : style.dropdown_close
+              }
+            >
+              <li className={style.nav_li}>
+                <button onClick={winrType} value="tinto">
+                  {t("nav.2")}
+                </button>
               </li>
 
               <li className={style.nav_li}>
-                <button >{t("nav.3")}</button>
+                <button onClick={winrType} value="blanco">
+                  {t("nav.3")}
+                </button>
               </li>
               <li className={style.nav_li}>
-                <button >{t("nav.4")}</button>
+                <button onClick={winrType} value="rosado">
+                {t("nav.4")}</button>
               </li>
-              
+
               <li className={style.nav_li}>
-                <button >{t("nav.5")}</button>
+                <button onClick={winrType} value="espumante">
+                {t("nav.5")}</button>
               </li>
             </ul>
           </li>
           <li className={style.nav_li}>
-            <button >{t("nav.6")}</button>
+            <button>{t("nav.6")}</button>
           </li>
           <li className={style.nav_li}>
-            <button >{t("nav.7")}</button>
+            <button>{t("nav.7")}</button>
           </li>
         </ul>
         <div className={isOpen ? style.card : style.menu_close_bottom}>
-          <button onClick={toggleTheme}>{theme? theme : "Modo light"}</button>
+          <button onClick={toggleTheme}>{theme ? theme : "Modo light"}</button>
           <button onClick={cambiarTexto}>{t("leng")}</button>
-          <div className={isOpenList ? style.container_search_open : style.container_search}>
-          <SearchBar />
+          <div
+            className={
+              isOpenList ? style.container_search_open : style.container_search
+            }
+          >
+            <SearchBar />
           </div>
         </div>
       </div>

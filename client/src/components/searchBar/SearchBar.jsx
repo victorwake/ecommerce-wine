@@ -18,8 +18,8 @@ export default function SearchBar(){
           dispatch(getWinesByName(input))
           dispatch(changeSearchWine(true))
           dispatch(cleanStateByName([]))
-          dispatch(isOpenNavBar(false))
-          dispatch(openList(false));
+          // dispatch(isOpenNavBar(false))
+          // dispatch(openList(false));
         }
       }
 
