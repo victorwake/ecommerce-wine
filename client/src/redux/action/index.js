@@ -72,7 +72,7 @@ export const IS_OPEN_LIST = 'IS_OPEN_LIST'
 export const getWineType = type => {
   return async dispatch => {
     try {
-      const response = await axios.get(`${URL_API}type?type=${type}`)
+      const response = await axios.get(`${URL_API_ONLINE}type?type=${type}`)
       dispatch({ type: GET_WINE_TYPE, payload: response.data })
       dispatch(changeCurrentPage(1)) // actualiza el currentPage a 1
       dispatch(cleanAllFilters()) // resetea los filtros
