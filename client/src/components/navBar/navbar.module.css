@@ -101,12 +101,12 @@
 
 }
 
-.activo button{
-    color:brown;
+.btn_li_activo button{
+    color:rgb(121, 37, 37);
 }
 
-.desactivo button{
-    color: blue;
+.btn_li button{
+    color: var(--text-color);
 }
 
 .container_search{

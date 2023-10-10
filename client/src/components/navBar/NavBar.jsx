@@ -23,6 +23,14 @@ export default function NavBar() {
   const [rosados, setRosados] = useState(true);
   const [espumantes, setEspumantes] = useState(true);
   const allWines = useSelector((state) => state.wines);
+  const wineType = useSelector((state) => state.wineType);
+
+  let primerTipoDeVino = null; 
+if (wineType.length > 0) {
+  primerTipoDeVino = wineType[0].color_type;
+}
+
+
 
   const toggleTheme = () => {
     const body = document.body;
@@ -100,10 +108,10 @@ export default function NavBar() {
 
       <div className={style.list_container}>
         <ul className={style.navbar_ul} id="my_navbar_collapse">
-          <li className={ allWines ? style.activo : style.desactivo}>
+          <li className={ allWines.length > 0 ? style.btn_li_activo : style.btn_li}>
             <button>{t("nav.0")}</button>
           </li>
-          <li className={style.nav_li}>
+          <li className={ isOpenList ? style.btn_li_activo : style.btn_li}>
             <button className={style.btn_lista} onClick={showMenuList}>
               {t("nav.1")}
               <Flecha
@@ -115,23 +123,23 @@ export default function NavBar() {
                 isOpenList ? style.dropdown_content : style.dropdown_close
               }
             >
-              <li className={style.nav_li}>
+              <li className={primerTipoDeVino === "Tinto" ? style.btn_li_activo : style.btn_li}>
                 <button onClick={winrType} value="tinto">
                   {t("nav.2")}
                 </button>
               </li>
 
-              <li className={style.nav_li}>
+              <li  className={primerTipoDeVino === "Blanco" ? style.btn_li_activo : style.btn_li}>
                 <button onClick={winrType} value="blanco">
                   {t("nav.3")}
                 </button>
               </li>
-              <li className={style.nav_li}>
+              <li  className={primerTipoDeVino === "Rosado" ? style.btn_li_activo : style.btn_li}>
                 <button onClick={winrType} value="rosado">
                 {t("nav.4")}</button>
               </li>
 
-              <li className={style.nav_li}>
+              <li  className={primerTipoDeVino === "Espumante" ? style.btn_li_activo : style.btn_li}>
                 <button onClick={winrType} value="espumante">
                 {t("nav.5")}</button>
               </li>
