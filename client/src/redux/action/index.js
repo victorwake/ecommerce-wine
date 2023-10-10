@@ -90,3 +90,23 @@ export const clearWineByName = () => ({
 });
 export const CLEAR_WINE_BY_NAME = 'CLEAR_WINE_BY_NAME'
 /*----------------------------------------------*/
+
+export const inicioNavBar = payload => {
+  return dispatch => {
+    dispatch({ type: NAV_INICIO, payload })
+  }
+}
+export const NAV_INICIO = 'NAV_INICIO'
+/*----------------------------------------------*/
+
+export const clearAllWine = () => ({
+  type: 'CLEAR_ALL_WINE',
+});
+export const CLEAR_ALL_WINE = 'CLEAR_ALL_WINE'
+/*----------------------------------------------*/
+
+export const clearWineType = () => ({
+  type: 'CLEAR_WINE_TYPE',
+});
+export const CLEAR_WINE_TYPE = 'CLEAR_WINE_TYPE'
+/*----------------------------------------------*/

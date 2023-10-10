@@ -101,6 +101,14 @@
 
 }
 
+.activo button{
+    color:brown;
+}
+
+.desactivo button{
+    color: blue;
+}
+
 .container_search{
     position: absolute;
     right: 8px;

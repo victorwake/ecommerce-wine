@@ -6,7 +6,7 @@ import style from "./navbar.module.css";
 import Hamburguer from "../../assets/svgComponents/hamburguer";
 import Flecha from "../../assets/svgComponents/flecha";
 import SearchBar from "../searchBar/SearchBar";
-import { isOpenNavBar, openList, getWineType, clearWineByName } from "../../redux/action/index";
+import { isOpenNavBar, openList, getWineType, clearWineByName, inicioNavBar, clearAllWine } from "../../redux/action/index";
 // import { getWines } from "../../redux/action/index";
 
 export default function NavBar() {
@@ -16,6 +16,13 @@ export default function NavBar() {
   const [theme, setTheme] = useState("");
   const isOpen = useSelector((state) => state.isOpen);
   const isOpenList = useSelector((state) => state.isOpenList);
+
+  const [vinos, setVinos] = useState(true);
+  const [tintos, setTintos] = useState(true);
+  const [blancos, setBlancos] = useState(true);
+  const [rosados, setRosados] = useState(true);
+  const [espumantes, setEspumantes] = useState(true);
+  const allWines = useSelector((state) => state.wines);
 
   const toggleTheme = () => {
     const body = document.body;
@@ -36,6 +43,14 @@ export default function NavBar() {
       setTheme(dark);
     }
   };
+
+  const menuActivos = () => {
+    if(allWines){
+      setInicio(true)
+    }else{
+      setInicio(false)
+    }
+  }
 
   const cambiarTexto = () => {
     if (currentLocale === "es") {
@@ -62,7 +77,14 @@ export default function NavBar() {
     const valueType = event.target.value;
     dispatch(getWineType(valueType));
     dispatch(clearWineByName())
+    dispatch(inicioNavBar(true))
+    dispatch(clearAllWine())
   };
+
+  
+  // const activeInicio = () => {
+  // dispatch(inicioNavBar(true))
+  // }
 
   // const loadRandomWines = () => {
   //   dispatch(getWines());
@@ -78,7 +100,7 @@ export default function NavBar() {
 
       <div className={style.list_container}>
         <ul className={style.navbar_ul} id="my_navbar_collapse">
-          <li className={style.nav_li}>
+          <li className={ allWines ? style.activo : style.desactivo}>
             <button>{t("nav.0")}</button>
           </li>
           <li className={style.nav_li}>
