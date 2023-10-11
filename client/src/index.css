@@ -21,7 +21,7 @@
   --box-shadow: -3px -2px 8px rgba(255, 255, 255, 0.452), 3px 2px 8px rgba(0, 0, 0, 0.26);
   --box-shadow-nav: 3px 2px 8px rgba(209, 209, 209, 0.267);
   --box-shadow-footer: -3px -2px 8px rgba(255, 255, 255, 0.452), 3px 2px 8px rgba(0, 0, 0, 0.26);
-
+  --btn-active: rgb(226, 0, 0);
 }
 
 .dark-theme {
@@ -33,6 +33,7 @@
   --box-shadow: -3px -2px 8px rgb(0, 0, 0), 3px 2px 8px rgba(255, 255, 255, 0.267);
   --box-shadow-nav:  3px 2px 8px rgba(0, 0, 0, 0.267);
   --box-shadow-footer: -3px -2px 8px rgba(0, 0, 0, 0.733), 3px 2px 8px rgba(255, 255, 255, 0.267);
+  --btn-active: rgba(236, 0, 0, 0.733);
 }
 
 body{

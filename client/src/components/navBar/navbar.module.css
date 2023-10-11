@@ -40,6 +40,7 @@
     font-size: 1.4em;
     min-width: 150px;
     top: 0;
+    margin-left:3px;
 }
 
 .menu_close_bottom{
@@ -101,6 +102,14 @@
 
 }
 
+.btn_li_activo button{
+    color: var(--btn-active);
+}
+
+.btn_li button{
+    color: var(--text-color);
+}
+
 .container_search{
     position: absolute;
     right: 8px;
@@ -157,8 +166,13 @@
         height: 55px;
         max-height: 55px;
         transition: max-height 0.5s ease;
+        
+    }
+    .hamburguesa_h1{
+        margin-left:15px;
     }
 
+    
 }
 
 @media (min-width: 1024px) { 
