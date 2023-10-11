@@ -91,13 +91,6 @@ export const clearWineByName = () => ({
 export const CLEAR_WINE_BY_NAME = 'CLEAR_WINE_BY_NAME'
 /*----------------------------------------------*/
 
-export const inicioNavBar = payload => {
-  return dispatch => {
-    dispatch({ type: NAV_INICIO, payload })
-  }
-}
-export const NAV_INICIO = 'NAV_INICIO'
-/*----------------------------------------------*/
 
 export const clearAllWine = () => ({
   type: 'CLEAR_ALL_WINE',
@@ -109,4 +102,29 @@ export const clearWineType = () => ({
   type: 'CLEAR_WINE_TYPE',
 });
 export const CLEAR_WINE_TYPE = 'CLEAR_WINE_TYPE'
+/*----------------------------------------------*/
+
+export const activeBtn = payload => {
+  return dispatch => {
+    dispatch({ type: BTN_ACTIVE, payload })
+  }
+}
+export const BTN_ACTIVE = 'BTN_ACTIVE'
+/*----------------------------------------------*/
+
+export const wineTypeBtn = payload => {
+    return dispatch => {
+    dispatch({ type: WINE_TYPE_BTN, payload })
+  }
+}
+
+export const WINE_TYPE_BTN = 'WINE_TYPE_BTN';
+/*----------------------------------------------*/
+
+export const inicioActive = payload => {
+  return dispatch => {
+    dispatch({ type: NAV_INICIO_ACTIVE, payload })
+  }
+}
+export const NAV_INICIO_ACTIVE = 'NAV_INICIO_ACTIVE'
 /*----------------------------------------------*/

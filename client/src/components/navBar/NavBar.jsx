@@ -1,13 +1,22 @@
 // eslint-disable-next-line
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import style from "./navbar.module.css";
 import Hamburguer from "../../assets/svgComponents/hamburguer";
 import Flecha from "../../assets/svgComponents/flecha";
 import SearchBar from "../searchBar/SearchBar";
-import { isOpenNavBar, openList, getWineType, clearWineByName, inicioNavBar, clearAllWine } from "../../redux/action/index";
-// import { getWines } from "../../redux/action/index";
+import { isOpenNavBar, 
+  openList, 
+  getWineType, 
+  clearWineByName, 
+  clearAllWine, 
+  wineTypeBtn, 
+  getWines, 
+  inicioActive,
+  clearWineType
+} from "../../redux/action/index";
+
 
 export default function NavBar() {
   const [t, i18n] = useTranslation("global");
@@ -17,18 +26,10 @@ export default function NavBar() {
   const isOpen = useSelector((state) => state.isOpen);
   const isOpenList = useSelector((state) => state.isOpenList);
 
-  const [vinos, setVinos] = useState(true);
-  const [tintos, setTintos] = useState(true);
-  const [blancos, setBlancos] = useState(true);
-  const [rosados, setRosados] = useState(true);
-  const [espumantes, setEspumantes] = useState(true);
+
   const allWines = useSelector((state) => state.wines);
   const wineType = useSelector((state) => state.wineType);
-
-  let primerTipoDeVino = null; 
-if (wineType.length > 0) {
-  primerTipoDeVino = wineType[0].color_type;
-}
+  const btnWwineType = useSelector((state) => state.wineBtnType)
 
 
 
@@ -52,14 +53,6 @@ if (wineType.length > 0) {
     }
   };
 
-  const menuActivos = () => {
-    if(allWines){
-      setInicio(true)
-    }else{
-      setInicio(false)
-    }
-  }
-
   const cambiarTexto = () => {
     if (currentLocale === "es") {
       i18n.changeLanguage("en");
@@ -82,22 +75,18 @@ if (wineType.length > 0) {
   };
 
   const winrType = () => {
-    const valueType = event.target.value;
+    const valueType =  event.target.value;
+    dispatch(wineTypeBtn(valueType));
     dispatch(getWineType(valueType));
-    dispatch(clearWineByName())
-    dispatch(inicioNavBar(true))
-    dispatch(clearAllWine())
+    dispatch(clearWineByName());
+    dispatch(clearAllWine([]));
   };
 
-  
-  // const activeInicio = () => {
-  // dispatch(inicioNavBar(true))
-  // }
-
-  // const loadRandomWines = () => {
-  //   dispatch(getWines());
-  // }
-  // onClick={loadRandomWines}
+  const inicio = () => {
+    dispatch(getWines())
+    dispatch(clearWineType())
+    dispatch(inicioActive(true))
+  }
 
   return (
     <nav className={isOpen ? style.menu_open : style.menu_close}>
@@ -109,7 +98,7 @@ if (wineType.length > 0) {
       <div className={style.list_container}>
         <ul className={style.navbar_ul} id="my_navbar_collapse">
           <li className={ allWines.length > 0 ? style.btn_li_activo : style.btn_li}>
-            <button>{t("nav.0")}</button>
+            <button onClick={inicio} >{t("nav.0")}</button>
           </li>
           <li className={ isOpenList ? style.btn_li_activo : style.btn_li}>
             <button className={style.btn_lista} onClick={showMenuList}>
@@ -123,23 +112,23 @@ if (wineType.length > 0) {
                 isOpenList ? style.dropdown_content : style.dropdown_close
               }
             >
-              <li className={primerTipoDeVino === "Tinto" ? style.btn_li_activo : style.btn_li}>
+             <li className={"tinto" == btnWwineType && wineType.length > 0 ? style.btn_li_activo : style.btn_li}>
                 <button onClick={winrType} value="tinto">
                   {t("nav.2")}
                 </button>
               </li>
 
-              <li  className={primerTipoDeVino === "Blanco" ? style.btn_li_activo : style.btn_li}>
+              <li  className={"blanco" == btnWwineType && wineType.length > 0 ? style.btn_li_activo : style.btn_li}>
                 <button onClick={winrType} value="blanco">
                   {t("nav.3")}
                 </button>
               </li>
-              <li  className={primerTipoDeVino === "Rosado" ? style.btn_li_activo : style.btn_li}>
+              <li  className={"rosado" == btnWwineType && wineType.length > 0 ? style.btn_li_activo : style.btn_li}>
                 <button onClick={winrType} value="rosado">
                 {t("nav.4")}</button>
               </li>
 
-              <li  className={primerTipoDeVino === "Espumante" ? style.btn_li_activo : style.btn_li}>
+              <li  className={"espumante" == btnWwineType && wineType.length > 0 ? style.btn_li_activo : style.btn_li}>
                 <button onClick={winrType} value="espumante">
                 {t("nav.5")}</button>
               </li>
@@ -153,7 +142,7 @@ if (wineType.length > 0) {
           </li>
         </ul>
         <div className={isOpen ? style.card : style.menu_close_bottom}>
-          <button onClick={toggleTheme}>{theme ? theme : "Modo light"}</button>
+          <button onClick={toggleTheme}>{theme ? theme : "Modo Dark"}</button>
           <button onClick={cambiarTexto}>{t("leng")}</button>
           <div
             className={

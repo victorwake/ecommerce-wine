@@ -2,7 +2,7 @@
 import Card from "../card/Card";
 import { useDispatch, useSelector  } from "react-redux";
 import { useEffect, useState } from "react";
-import { getWines, changeSearchWine,cleanStateByName } from "../../redux/action/index";
+import { getWines, changeSearchWine, cleanStateByName } from "../../redux/action/index";
 import Loading from '../../util/Loading'
 import style from './home.module.css'
 
@@ -13,6 +13,8 @@ export default function Home() {
   const searchWine = useSelector((state) => state.searchWine);
   const wineType = useSelector((state) => state.wineType);
   const isOpen = useSelector((state) => state.isOpen);
+  const navInicioActive = useSelector((state) => state.navInicio);
+  // const btnWwineType = useSelector((state) => state.wineTypeBtn)
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [randomWines, setRandomWines] = useState([]);
   
@@ -62,7 +64,8 @@ export default function Home() {
       image.onload = imageLoadHandler;
       image.onerror = imageLoadHandler;
     });
-  }, [winesRender]);
+  }, [winesRender, navInicioActive]);
+  
 
   return (
     <div className={style.box_wines}>

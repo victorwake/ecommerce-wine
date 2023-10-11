@@ -11,7 +11,9 @@ import {
   CLEAR_WINE_BY_NAME,
   CLEAR_ALL_WINE,
   CLEAR_WINE_TYPE,
-  NAV_INICIO,
+  BTN_ACTIVE,
+  WINE_TYPE_BTN,
+  NAV_INICIO_ACTIVE
 } from "../action/index.js";
 
 const initialState = {
@@ -22,6 +24,8 @@ const initialState = {
   isOpen: false,
   isOpenList: false,
   navInicio: false,
+  btnActive: false,
+  wineBtnType: '',
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -75,7 +79,17 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             wineType: (action.payload = []),
           };
-      case 'NAV_INICIO':
+          case BTN_ACTIVE:
+      return {
+        ...state,
+        btnActive: action.payload,
+      };
+      case WINE_TYPE_BTN:
+      return {
+        ...state,
+        wineBtnType: action.payload,
+      };
+      case NAV_INICIO_ACTIVE:
       return {
         ...state,
         navInicio: action.payload,
