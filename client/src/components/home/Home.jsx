@@ -2,9 +2,10 @@
 import Card from "../card/Card";
 import { useDispatch, useSelector  } from "react-redux";
 import { useEffect, useState } from "react";
-import { getWines, changeSearchWine, cleanStateByName } from "../../redux/action/index";
+import { getWines, changeSearchWine, clearWineByName } from "../../redux/action/index";
 import Loading from '../../util/Loading'
 import style from './home.module.css'
+import CardExp from "../experience/CardExp"
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -12,9 +13,9 @@ export default function Home() {
   const wineByName = useSelector((state) => state.wineByName);
   const searchWine = useSelector((state) => state.searchWine);
   const wineType = useSelector((state) => state.wineType);
+  const experiencies = useSelector((state) => state.experience);
   const isOpen = useSelector((state) => state.isOpen);
   const navInicioActive = useSelector((state) => state.navInicio);
-  // const btnWwineType = useSelector((state) => state.wineTypeBtn)
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [randomWines, setRandomWines] = useState([]);
   
@@ -39,7 +40,7 @@ export default function Home() {
 
   useEffect(() => {
     return () => {
-      dispatch(cleanStateByName([]))
+      dispatch(clearWineByName())
       dispatch(changeSearchWine(false));
     };
   }, [dispatch]);
@@ -69,37 +70,52 @@ export default function Home() {
 
   return (
     <div className={style.box_wines}>
-     {imagesLoaded ? (
-  wineType && wineType.length > 0 && wineByName.length < 1 ? (
-    wineType.map((w) => (
-      <div key={w.id}>
-        <Card
-          className={style.card_wines}
-          name={w.name}
-          varietal={w.varietal}
-          image={w.image}
-          winery={w.winery}
-          price={`$${w.price}`}
-        />
-      </div>
-    ))
-  ) : (
-    randomWines?.map((w) => (
-      <div key={w.id}>
-        <Card
-          className={style.card_wines}
-          name={w.name}
-          varietal={w.varietal}
-          image={w.image}
-          winery={w.winery}
-          price={`$${w.price}`}
-        />
-      </div>
-    ))
-  )
-) : (
-  <Loading />
-)}
+      {imagesLoaded ? (
+        wineType && wineType.length > 0 && wineByName.length < 1 ? (
+          wineType.map((w) => (
+            <div key={w.id}>
+              <Card
+                className={style.card_wines}
+                name={w.name}
+                varietal={w.varietal}
+                image={w.image}
+                winery={w.winery}
+                price={`$${w.price}`}
+              />
+            </div>
+          ))
+        ) : (
+          experiencies.length > 0 && randomWines.length < 1 ? (
+            experiencies.map((e) => (
+              <div key={e.id}>
+                <CardExp
+                  // className={style.card_wines}
+                  name={e.name}
+                  // varietal={e.kindOfExp}
+                  // image={e.image}
+                  // winery={e.url}
+                  // price={`$${e.price}`}
+                />
+              </div>
+            ))
+          ) : (
+            randomWines?.map((w) => (
+              <div key={w.id}>
+                <Card
+                  className={style.card_wines}
+                  name={w.name}
+                  varietal={w.varietal}
+                  image={w.image}
+                  winery={w.winery}
+                  price={`$${w.price}`}
+                />
+              </div>
+            ))
+          )
+        )
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }
