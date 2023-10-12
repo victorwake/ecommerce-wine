@@ -14,7 +14,10 @@ import { isOpenNavBar,
   wineTypeBtn, 
   getWines, 
   inicioActive,
-  clearWineType
+  clearWineType,
+  getExperience,
+  clearExperience,
+  changeSearchWine
 } from "../../redux/action/index";
 
 
@@ -79,13 +82,24 @@ export default function NavBar() {
     dispatch(wineTypeBtn(valueType));
     dispatch(getWineType(valueType));
     dispatch(clearWineByName());
-    dispatch(clearAllWine([]));
+    dispatch(clearAllWine());
+    dispatch(clearExperience())
   };
 
   const inicio = () => {
-    dispatch(getWines())
+    dispatch(changeSearchWine(false));
     dispatch(clearWineType())
+    dispatch(clearExperience())
+    dispatch(clearWineByName());
     dispatch(inicioActive(true))
+    dispatch(getWines())
+  }
+
+  const experience = () => {
+    dispatch(clearWineType())
+    dispatch(clearAllWine());
+    dispatch(clearWineByName());
+    dispatch(getExperience())
   }
 
   return (
@@ -135,7 +149,7 @@ export default function NavBar() {
             </ul>
           </li>
           <li className={style.nav_li}>
-            <button>{t("nav.6")}</button>
+            <button onClick={experience} value="">{t("nav.6")}</button>
           </li>
           <li className={style.nav_li}>
             <button>{t("nav.7")}</button>

@@ -104,6 +104,12 @@ export const clearWineType = () => ({
 export const CLEAR_WINE_TYPE = 'CLEAR_WINE_TYPE'
 /*----------------------------------------------*/
 
+export const clearExperience = () => ({
+  type: 'CLEAR_EXPERIENCE',
+});
+export const CLEAR_EXPERIENCE = 'CLEAR_EXPERIENCE'
+/*----------------------------------------------*/
+
 export const activeBtn = payload => {
   return dispatch => {
     dispatch({ type: BTN_ACTIVE, payload })
@@ -127,4 +133,20 @@ export const inicioActive = payload => {
   }
 }
 export const NAV_INICIO_ACTIVE = 'NAV_INICIO_ACTIVE'
+/*----------------------------------------------*/
+
+export const getExperience = () => {
+  return async dispatch => {
+    try {
+      const response = await axios.get(`${URL_API}experience`)
+      dispatch({
+        type: GET_EXPERIENCE,
+        payload: response.data,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+export const GET_EXPERIENCE = 'GET_EXPERIENCE'
 /*----------------------------------------------*/
