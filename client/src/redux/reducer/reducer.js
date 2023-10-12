@@ -11,9 +11,11 @@ import {
   CLEAR_WINE_BY_NAME,
   CLEAR_ALL_WINE,
   CLEAR_WINE_TYPE,
+  CLEAR_EXPERIENCE,
   BTN_ACTIVE,
   WINE_TYPE_BTN,
-  NAV_INICIO_ACTIVE
+  NAV_INICIO_ACTIVE,
+  GET_EXPERIENCE
 } from "../action/index.js";
 
 const initialState = {
@@ -26,6 +28,7 @@ const initialState = {
   navInicio: false,
   btnActive: false,
   wineBtnType: '',
+  experience: [],
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -73,12 +76,17 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           wines: (action.payload = []),
+      };
+      case 'CLEAR_WINE_TYPE':
+        return {
+          ...state,
+          wineType: (action.payload = []),
         };
-        case 'CLEAR_WINE_TYPE':
-          return {
-            ...state,
-            wineType: (action.payload = []),
-          };
+        case 'CLEAR_EXPERIENCE':
+        return {
+          ...state,
+          experience: (action.payload = []),
+        };
           case BTN_ACTIVE:
       return {
         ...state,
@@ -93,6 +101,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         navInicio: action.payload,
+      };
+      case GET_EXPERIENCE:
+      return {
+        ...state,
+        experience: action.payload,
       };
       
     default:
