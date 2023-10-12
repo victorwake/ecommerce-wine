@@ -138,7 +138,7 @@ export const NAV_INICIO_ACTIVE = 'NAV_INICIO_ACTIVE'
 export const getExperience = () => {
   return async dispatch => {
     try {
-      const response = await axios.get(`${URL_API}experience`)
+      const response = await axios.get(`${URL_API_ONLINE}experience`)
       dispatch({
         type: GET_EXPERIENCE,
         payload: response.data,

@@ -2,13 +2,14 @@
 .container_footer{
     background-color:var(--bg-color);
     box-shadow:var(--box-shadow-footer);
-    /* height: 100px; */
+    display: grid;
+  justify-items: center;
 
 }
 
 .row{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+  justify-items: center;
     margin-right: -15px;
     margin-left: -15px;
 }
