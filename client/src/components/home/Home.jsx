@@ -2,7 +2,7 @@
 import Card from "../card/Card";
 import { useDispatch, useSelector  } from "react-redux";
 import { useEffect, useState } from "react";
-import { getWines, changeSearchWine, clearWineByName } from "../../redux/action/index";
+import { getWines, changeSearchWine, clearWineByName, getTheme } from "../../redux/action/index";
 import Loading from '../../util/Loading'
 import style from './home.module.css'
 import CardExp from "../experience/CardExp"
@@ -14,16 +14,16 @@ export default function Home() {
   const searchWine = useSelector((state) => state.searchWine);
   const wineType = useSelector((state) => state.wineType);
   const experiencies = useSelector((state) => state.experience);
-  const isOpen = useSelector((state) => state.isOpen);
+  // const isOpen = useSelector((state) => state.isOpen);
   const navInicioActive = useSelector((state) => state.navInicio);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [randomWines, setRandomWines] = useState([]);
   
 
-  let notFound = false;
-  if (searchWine && wineByName.length === 0) {
-    notFound = true;
-  }
+  // let notFound = false;
+  // if (searchWine && wineByName.length === 0) {
+  //   notFound = true;
+  // }
 
   let winesRender = [];
   if (searchWine) {
@@ -36,7 +36,20 @@ export default function Home() {
 
   useEffect(() => {
     if (!allWines.length) dispatch(getWines());
+    const body = document.body;
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      body.classList.add("dark");
+      dispatch(getTheme('dark'))  
+    } else {
+      body.classList.remove("dark");
+      body.classList.add("light");
+      dispatch(getTheme('light'))
+
+        
+        
+    }
   }, []);
+  
 
   useEffect(() => {
     return () => {
@@ -69,6 +82,8 @@ export default function Home() {
   
 
   return (
+    <div className={style.container_wines}>
+    <div className={style.container_h2}><h2>Recomendados</h2></div>
     <div className={style.box_wines}>
       {imagesLoaded ? (
         wineType && wineType.length > 0 && wineByName.length < 1 ? (
@@ -116,6 +131,7 @@ export default function Home() {
       ) : (
         <Loading />
       )}
+    </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL_API = import.meta.env.VITE_URL_API
+// const URL_API = import.meta.env.VITE_URL_API
 const URL_API_ONLINE = import.meta.env.VITE_URL_API_ONLINE
 
 
@@ -74,8 +74,8 @@ export const getWineType = type => {
     try {
       const response = await axios.get(`${URL_API_ONLINE}type?type=${type}`)
       dispatch({ type: GET_WINE_TYPE, payload: response.data })
-      dispatch(changeCurrentPage(1)) // actualiza el currentPage a 1
-      dispatch(cleanAllFilters()) // resetea los filtros
+      // dispatch(changeCurrentPage(1)) // actualiza el currentPage a 1
+      // dispatch(cleanAllFilters()) // resetea los filtros
     } catch (error) {
       console.log(error)
     }
@@ -149,4 +149,13 @@ export const getExperience = () => {
   }
 }
 export const GET_EXPERIENCE = 'GET_EXPERIENCE'
+/*----------------------------------------------*/
+
+export const getTheme = payload => {
+  return dispatch => {
+  dispatch({ type: THEME_MODE, payload })
+}
+}
+
+export const THEME_MODE = 'THEME_MODE';
 /*----------------------------------------------*/
