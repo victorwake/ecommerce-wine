@@ -17,7 +17,8 @@ import { isOpenNavBar,
   clearWineType,
   getExperience,
   clearExperience,
-  changeSearchWine
+  changeSearchWine,
+  getTheme
 } from "../../redux/action/index";
 
 
@@ -33,13 +34,23 @@ export default function NavBar() {
   const allWines = useSelector((state) => state.wines);
   const wineType = useSelector((state) => state.wineType);
   const btnWwineType = useSelector((state) => state.wineBtnType)
+  const experiences = useSelector((state) => state.experience)
+  const getMode = useSelector((state) => state.themeMode)
 
 
 
   const toggleTheme = () => {
-    const body = document.body;
-    body.classList.toggle("dark-theme");
-    body.classList.contains("dark-theme") ? "dark" : "ligth";
+      const body = document.body;
+      // body.classList.toggle("dark");
+      if (getMode === "dark") {
+        dispatch(getTheme('light'))
+        body.classList.remove("dark");
+        body.classList.add("light");
+    } else {
+        dispatch(getTheme('dark'))
+        body.classList.remove("light");
+        body.classList.add("dark");
+    }
     verificaThema();
     dispatch(isOpenNavBar(false));
     dispatch(openList(false));
@@ -49,7 +60,7 @@ export default function NavBar() {
     const body = document.body;
     const dark = t("dark");
     const light = t("light");
-    if (body.classList.contains("dark-theme")) {
+    if (body.classList.contains("dark")) {
       setTheme(light);
     } else {
       setTheme(dark);
@@ -148,7 +159,7 @@ export default function NavBar() {
               </li>
             </ul>
           </li>
-          <li className={style.nav_li}>
+          <li className={ experiences.length > 0 ? style.btn_li_activo : style.btn_li}>
             <button onClick={experience} value="">{t("nav.6")}</button>
           </li>
           <li className={style.nav_li}>

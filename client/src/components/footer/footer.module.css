@@ -1,69 +1,208 @@
 
 .container_footer{
-    background-color:var(--bg-color);
-    box-shadow:var(--box-shadow-footer);
-    display: grid;
-  justify-items: center;
-
+  background: var(--bg-color);
+  box-shadow: var(--box-shadow-footer); 
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
 }
 
-.row{
-    display: grid;
-  justify-items: center;
-    margin-right: -15px;
-    margin-left: -15px;
+.footer_content svg {
+    transform: scale(0.7);
 }
 
-/* Estilos para el pie de página (footer) */
-.site-footer {
-    background-color: #f8f8f8;
-    padding: 40px 0;
+.container_whatsapp{
+  display: flex;
+  align-items: center;
+}
+.container{
+  /* width: 1140px; */
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.footer_content{
+  width: 33.3%;
+  color:var(--text-color);
+}
+
+.footer_content p{
+  color:var(--text-color-card);
+}
+
+.bottom_bar span{
+  color:var(--text-color-card)
+}
+
+.footer_content button{
+  border: none;
+  background-color: transparent;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color:var(--text-color-card)
+}
+
+.contac_h3{
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+h3{
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.footer_content p{
+  width:190px;
+  margin: auto;
+  padding: 7px;
+}
+.footer_content ul{
+  text-align: center;
+}
+.list{
+  padding: 0;
+}
+.list li{
+  width: auto;
+  text-align: center;
+  list-style-type:none;
+  padding: 7px;
+  position: relative;
+}
+
+.social_icons{
+  text-align: center;
+  padding: 0;
+}
+.social_icons li{
+  display: inline-block;
+  text-align: center;
+  padding: 5px;
+}
+.social_icons i{
+  color: rgb(245, 8, 8);
+  font-size: 25px;
+}
+a{
+  text-decoration: none;
+}
+
+.bottom_bar{
+  background: var(--bg-color);
+  box-shadow: var(--box-shadow-footer);
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 50px;
+}
+.bottom_bar p{
+  color:var(--text-color);
+  margin: 0;
+  font-size: 16px;
+  padding: 7px;
+}
+
+.square{
+  width: 100%;
+  height: auto;
+  margin-top: 48px;
+  padding: 0px !important;
+  padding-bottom: 20px;
+}
+
+.brand{
+  margin-top: 20px;
+  font-size: 38px;
+  color: #00a991;
+  font-weight: bold;
+}
+
+.about{
+  width: 85%;
+  color: white;
+  margin-top: 5px;
+}
+
+.heading{
+  margin-top: 20px;
+  font-size: 38px;
+  color: #00a991;
+  font-weight: bold;
+  text-align: center;
+}
+
+.p-list{
+  padding: 0;
+}
+
+.p-list li{
+  display: block;
+  text-align: center;
+  margin: 5px 0px;
+  color: white;
+}
+
+.l-list{
+  padding: 0;
+}
+
+.l-list li{
+  display: block;
+  text-align: center;
+  margin: 5px 0px;
+  color: white;
+}
+
+.contact{
+  padding: 0;
+}
+
+.contact li{
+  display: block;
+  text-align: center;
+  margin: 5px 0px;
+  color: white;
+}
+
+.social-media{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-media li{
+  display: inline-flex;
+  color: white;
+  margin: 5px;
+  font-size: 25px;
+}
+
+.copy{
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width:767px){
+  .heading{
+      text-align: left;
   }
-  
-  .site-footer h6 {
-    color: #333;
-    font-size: 16px;
-    text-transform: uppercase;
-    margin-top: 5px;
+  .square{
+      padding: 0px 30px !important;
+      margin-top: 10px!important;
   }
-  
-  .site-footer p {
-    color: #777;
-    font-size: 14px;
+
+  .p-list li , .l-list li , .contact li{
+      text-align: left;
   }
-  
-  /* Estilos para las listas de enlaces en el pie de página */
-  .footer-links li {
-    padding: 8px 0;
-    display: inline-block;
+  .social-media{
+      padding-left: 0!important;
   }
-  
-  .footer-links a {
-    color: #777;
-    text-decoration: none;
+
+  .social-media li{
+      margin: 5px;
   }
-  
-  /* Estilos para el texto de derechos de autor (copyright) */
-  .copyright-text {
-    color: #666;
-    font-size: 14px;
-  }
-  
-  /* Estilos para los íconos sociales */
-  .social-icons {
-    margin-top: 10px;
-  }
-  
-  .social-icons a {
-    color: #333;
-    font-size: 16px;
-    margin-right: 10px;
-    text-decoration: none;
-  }
-  
-  /* Estilos para la línea divisoria */
-  hr {
-    border-top: 1px solid #ccc;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
+}
