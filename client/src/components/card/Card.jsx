@@ -1,6 +1,6 @@
 import style from "./card.module.css";
-
-export default function Card({ image, name, color_type, varietal, winery, price, id }) {
+import PropTypes from "prop-types";
+export default function Card({ image, name, color_type, varietal, winery, price}) {
   return (
     <div className={style.container_card}>
       <div className={style.box_card}>
@@ -25,3 +25,14 @@ export default function Card({ image, name, color_type, varietal, winery, price,
     </div>
   );
 }
+
+  Card.propTypes = {
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    color_type: PropTypes.string.isRequired,
+    varietal: PropTypes.string.isRequired,
+    winery: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+}
+

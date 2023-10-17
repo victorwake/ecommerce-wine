@@ -109,7 +109,7 @@ export default function Home() {
                   // className={style.card_wines}
                   name={e.name}
                   // varietal={e.kindOfExp}
-                  // image={e.image}
+                  image={e.image}
                   // winery={e.url}
                   // price={`$${e.price}`}
                 />
