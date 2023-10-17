@@ -159,3 +159,12 @@ export const getTheme = payload => {
 
 export const THEME_MODE = 'THEME_MODE';
 /*----------------------------------------------*/
+
+export const getTitle = payload => {
+  return dispatch => {
+  dispatch({ type: TITLE, payload })
+}
+}
+
+export const TITLE = 'TITLE';
+/*----------------------------------------------*/

@@ -18,7 +18,8 @@ import { isOpenNavBar,
   getExperience,
   clearExperience,
   changeSearchWine,
-  getTheme
+  getTheme,
+  getTitle 
 } from "../../redux/action/index";
 
 
@@ -36,7 +37,6 @@ export default function NavBar() {
   const btnWwineType = useSelector((state) => state.wineBtnType)
   const experiences = useSelector((state) => state.experience)
   const getMode = useSelector((state) => state.themeMode)
-
 
 
   const toggleTheme = () => {
@@ -89,12 +89,13 @@ export default function NavBar() {
   };
 
   const winrType = () => {
+    const valueType =  event.target.value;
     dispatch(clearWineByName());
     dispatch(clearAllWine());
     dispatch(clearExperience())
-    const valueType =  event.target.value;
     dispatch(wineTypeBtn(valueType));
     dispatch(getWineType(valueType));
+    dispatch(getTitle(`Vinos ${valueType}`))
   };
 
   const inicio = () => {
@@ -104,19 +105,21 @@ export default function NavBar() {
     dispatch(clearWineByName());
     dispatch(inicioActive(true))
     dispatch(getWines())
+    dispatch(getTitle('Recomendados'))
   }
 
   const experience = () => {
+    dispatch(getExperience())
     dispatch(clearWineType())
     dispatch(clearAllWine());
     dispatch(clearWineByName());
-    dispatch(getExperience())
+    dispatch(getTitle('experiencies'))
   }
 
   useEffect(() => {
     verificaThema()
-
   }, []);
+
 
   return (
     <nav className={isOpen ? style.menu_open : style.menu_close}>
