@@ -113,7 +113,7 @@ export default function NavBar() {
     dispatch(clearWineType())
     dispatch(clearAllWine());
     dispatch(clearWineByName());
-    dispatch(getTitle('experiencies'))
+    dispatch(getTitle('Experiencias'))
   }
 
   useEffect(() => {
