@@ -2,22 +2,9 @@
 .container_footer{
   background: var(--bg-color);
   box-shadow: var(--box-shadow-footer); 
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
 }
 
-.footer_content svg {
-    transform: scale(0.7);
-}
-
-.container_whatsapp{
-  display: flex;
-  align-items: center;
-}
 .container{
-  /* width: 1140px; */
   margin: auto;
   display: flex;
   justify-content: center;
@@ -25,16 +12,25 @@
   flex-direction: column;
 }
 .footer_content{
-  width: 33.3%;
   color:var(--text-color);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .footer_content p{
+  width:190px;
   color:var(--text-color-card);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }
 
-.bottom_bar span{
-  color:var(--text-color-card)
+.footer_content svg {
+    transform: scale(0.7);
 }
 
 .footer_content button{
@@ -42,8 +38,37 @@
   background-color: transparent;
   font-size: 1.3rem;
   font-weight: 600;
+  color:var(--text-color-card);
+}
+
+.container_whatsapp{
+  display: flex;
+  align-items: center;
+}
+
+.fallow_h3,
+.social_icons {
+  margin: 0;
+}
+
+.button_quick{
+  margin-top: -25px;
+  margin-bottom: 10px;
+}
+
+.fallow_h3{
+  padding: 0;
+}
+
+.social_icons svg{
+  transform: scale(0.3);
+  margin-top: -25px;
+}
+
+.bottom_bar span{
   color:var(--text-color-card)
 }
+
 
 .contac_h3{
   font-size: 28px;
@@ -51,16 +76,16 @@
   text-align: center;
 }
 
-h3{
+.fallow_h3{
   font-size: 28px;
-  margin-bottom: 15px;
   text-align: center;
 }
-.footer_content p{
-  width:190px;
-  margin: auto;
-  padding: 7px;
+
+.quick_list_h3{
+  font-size: 28px;
+  text-align: center;
 }
+
 .footer_content ul{
   text-align: center;
 }
@@ -71,7 +96,6 @@ h3{
   width: auto;
   text-align: center;
   list-style-type:none;
-  padding: 7px;
   position: relative;
 }
 
@@ -82,12 +106,9 @@ h3{
 .social_icons li{
   display: inline-block;
   text-align: center;
-  padding: 5px;
+  margin: 0 -25px;
 }
-.social_icons i{
-  color: rgb(245, 8, 8);
-  font-size: 25px;
-}
+
 a{
   text-decoration: none;
 }
@@ -97,13 +118,11 @@ a{
   box-shadow: var(--box-shadow-footer);
   text-align: center;
   padding: 10px 0;
-  margin-top: 50px;
 }
 .bottom_bar p{
   color:var(--text-color);
   margin: 0;
   font-size: 16px;
-  padding: 7px;
 }
 
 .square{
@@ -168,17 +187,6 @@ a{
   color: white;
 }
 
-.social-media{
-  text-align: center;
-  margin-top: 20px;
-}
-
-.social-media li{
-  display: inline-flex;
-  color: white;
-  margin: 5px;
-  font-size: 25px;
-}
 
 .copy{
   text-align: center;
@@ -198,11 +206,5 @@ a{
   .p-list li , .l-list li , .contact li{
       text-align: left;
   }
-  .social-media{
-      padding-left: 0!important;
-  }
 
-  .social-media li{
-      margin: 5px;
-  }
 }
