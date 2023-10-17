@@ -14,6 +14,7 @@ export default function Home() {
   const searchWine = useSelector((state) => state.searchWine);
   const wineType = useSelector((state) => state.wineType);
   const experiencies = useSelector((state) => state.experience);
+  const wineBtnType = useSelector((state) => state.wineBtnType);
   // const isOpen = useSelector((state) => state.isOpen);
   const navInicioActive = useSelector((state) => state.navInicio);
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -43,10 +44,7 @@ export default function Home() {
     } else {
       body.classList.remove("dark");
       body.classList.add("light");
-      dispatch(getTheme('light'))
-
-        
-        
+      dispatch(getTheme('light'))  
     }
   }, []);
   
@@ -83,7 +81,9 @@ export default function Home() {
 
   return (
     <div className={style.container_wines}>
-    <div className={style.container_h2}><h2>Recomendados</h2></div>
+    <div className={style.container_h2}><h2>
+    {experiencies.length > 0 ? 'Experiencias' : (wineByName.length > 0 ?'Resultados' :(allWines.length > 0 ? 'Recomendados' : `Vinos ${wineBtnType}`))}
+    </h2></div>
     <div className={style.box_wines}>
       {imagesLoaded ? (
         wineType && wineType.length > 0 && wineByName.length < 1 ? (

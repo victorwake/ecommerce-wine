@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import style from "./navbar.module.css";
@@ -89,12 +89,12 @@ export default function NavBar() {
   };
 
   const winrType = () => {
-    const valueType =  event.target.value;
-    dispatch(wineTypeBtn(valueType));
-    dispatch(getWineType(valueType));
     dispatch(clearWineByName());
     dispatch(clearAllWine());
     dispatch(clearExperience())
+    const valueType =  event.target.value;
+    dispatch(wineTypeBtn(valueType));
+    dispatch(getWineType(valueType));
   };
 
   const inicio = () => {
@@ -112,6 +112,11 @@ export default function NavBar() {
     dispatch(clearWineByName());
     dispatch(getExperience())
   }
+
+  useEffect(() => {
+    verificaThema()
+
+  }, []);
 
   return (
     <nav className={isOpen ? style.menu_open : style.menu_close}>
