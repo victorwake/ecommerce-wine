@@ -14,12 +14,12 @@ export default function Home() {
   const searchWine = useSelector((state) => state.searchWine);
   const wineType = useSelector((state) => state.wineType);
   const experiencies = useSelector((state) => state.experience);
-  const wineBtnType = useSelector((state) => state.wineBtnType);
-  // const isOpen = useSelector((state) => state.isOpen);
+  const title = useSelector((state) => state.title);
   const navInicioActive = useSelector((state) => state.navInicio);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [randomWines, setRandomWines] = useState([]);
   
+  console.log(title )
 
   // let notFound = false;
   // if (searchWine && wineByName.length === 0) {
@@ -53,8 +53,10 @@ export default function Home() {
     return () => {
       dispatch(clearWineByName())
       dispatch(changeSearchWine(false));
+      
     };
   }, [dispatch]);
+
 
   useEffect(() => {
     const shuffledWines = [...winesRender].sort(() => Math.random() - 0.5);
@@ -82,7 +84,7 @@ export default function Home() {
   return (
     <div className={style.container_wines}>
     <div className={style.container_h2}><h2>
-    {experiencies.length > 0 ? 'Experiencias' : (wineByName.length > 0 ?'Resultados' :(allWines.length > 0 ? 'Recomendados' : `Vinos ${wineBtnType}`))}
+    {title} 
     </h2></div>
     <div className={style.box_wines}>
       {imagesLoaded ? (

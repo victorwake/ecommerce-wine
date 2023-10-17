@@ -16,7 +16,8 @@ import {
   WINE_TYPE_BTN,
   NAV_INICIO_ACTIVE,
   GET_EXPERIENCE,
-  THEME_MODE
+  THEME_MODE,
+  TITLE
 } from "../action/index.js";
 
 const initialState = {
@@ -30,7 +31,8 @@ const initialState = {
   btnActive: false,
   wineBtnType: '',
   experience: [],
-  themeMode: ''
+  themeMode: '',
+  title: 'Recomendados'
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -113,6 +115,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         themeMode: action.payload,
+      };
+      case TITLE:
+      return {
+        ...state,
+        title: action.payload,
       };
       
     default:
