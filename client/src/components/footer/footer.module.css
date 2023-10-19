@@ -1,7 +1,8 @@
 
 .container_footer{
-  background: var(--bg-color);
+  /* background: var(--bg-color); */
   box-shadow: var(--box-shadow-footer); 
+  background-color: transparent;
 }
 
 .container{
@@ -12,7 +13,7 @@
   flex-direction: column;
 }
 .footer_content{
-  color:var(--text-color);
+  /* color:var(--text-color); */
   display: flex;
   text-align: center;
   justify-content: center;
@@ -114,15 +115,18 @@ a{
 }
 
 .bottom_bar{
-  background: var(--bg-color);
-  box-shadow: var(--box-shadow-footer);
+  /* background: var(--bg-color); */
+
   text-align: center;
   padding: 10px 0;
+  background-color: transparent;
 }
 .bottom_bar p{
-  color:var(--text-color);
+  /* color:var(--text-color); */
   margin: 0;
   font-size: 16px;
+  background-color: transparent;
+  box-shadow: var(--box-shadow-footer);
 }
 
 .square{
