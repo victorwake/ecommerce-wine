@@ -2,10 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Oswald:wght@600&display=swap');
 
-/* .container_wines{
- 
-  
-} */
+.container_wines{
+  /* background: var(--bg-color);
+  color:var(--text-color); */
+}
 
 .container_h2{
   display: flex;

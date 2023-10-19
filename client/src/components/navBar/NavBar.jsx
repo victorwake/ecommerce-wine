@@ -41,7 +41,6 @@ export default function NavBar() {
 
   const toggleTheme = () => {
       const body = document.body;
-      // body.classList.toggle("dark");
       if (getMode === "dark") {
         dispatch(getTheme('light'))
         body.classList.remove("dark");
