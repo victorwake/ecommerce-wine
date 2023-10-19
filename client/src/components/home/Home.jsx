@@ -42,7 +42,6 @@ export default function Home() {
       body.classList.add("dark");
       dispatch(getTheme('dark'))  
     } else {
-      body.classList.remove("dark");
       body.classList.add("light");
       dispatch(getTheme('light'))  
     }
