@@ -38,7 +38,6 @@ export default function NavBar() {
   const experiences = useSelector((state) => state.experience)
   const getMode = useSelector((state) => state.themeMode)
 
-
   const toggleTheme = () => {
       const body = document.body;
       if (getMode === "dark") {
@@ -56,16 +55,15 @@ export default function NavBar() {
   };
 
   const verificaThema = () => {
-    const body = document.body;
     const dark = t("dark");
     const light = t("light");
-    if (body.classList.contains("dark")) {
+    if (getMode === "dark") {
       setTheme(light);
     } else {
       setTheme(dark);
     }
   };
-
+  
   const cambiarTexto = () => {
     if (currentLocale === "es") {
       i18n.changeLanguage("en");
@@ -117,7 +115,7 @@ export default function NavBar() {
 
   useEffect(() => {
     verificaThema()
-  }, []);
+  }, [toggleTheme]);
 
 
   return (
@@ -174,7 +172,7 @@ export default function NavBar() {
           </li>
         </ul>
         <div className={isOpen ? style.card : style.menu_close_bottom}>
-          <button onClick={toggleTheme}>{theme ? theme : "Modo Dark"}</button>
+          <button onClick={toggleTheme}>{theme}</button>
           <button onClick={cambiarTexto}>{t("leng")}</button>
           <div
             className={
