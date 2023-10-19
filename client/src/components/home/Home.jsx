@@ -18,6 +18,7 @@ export default function Home() {
   const navInicioActive = useSelector((state) => state.navInicio);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [randomWines, setRandomWines] = useState([]);
+  const getMode = useSelector((state) => state.themeMode)
   
   console.log(title )
 
@@ -42,11 +43,11 @@ export default function Home() {
       body.classList.add("dark");
       dispatch(getTheme('dark'))  
     } else {
-      body.classList.remove("dark");
       body.classList.add("light");
       dispatch(getTheme('light'))  
     }
   }, []);
+  console.log(getMode )
   
 
   useEffect(() => {
