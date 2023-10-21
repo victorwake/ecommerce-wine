@@ -18,9 +18,6 @@ export default function Home() {
   const navInicioActive = useSelector((state) => state.navInicio);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [randomWines, setRandomWines] = useState([]);
-  const getMode = useSelector((state) => state.themeMode)
-  
-  console.log(title )
 
   // let notFound = false;
   // if (searchWine && wineByName.length === 0) {
@@ -47,8 +44,7 @@ export default function Home() {
       dispatch(getTheme('light'))  
     }
   }, []);
-  console.log(getMode )
-  
+
 
   useEffect(() => {
     return () => {
