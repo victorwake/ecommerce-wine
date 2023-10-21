@@ -17,7 +17,8 @@ import {
   NAV_INICIO_ACTIVE,
   GET_EXPERIENCE,
   THEME_MODE,
-  TITLE
+  TITLE,
+  CLOSE_LOGIN
 } from "../action/index.js";
 
 const initialState = {
@@ -32,7 +33,8 @@ const initialState = {
   wineBtnType: '',
   experience: [],
   themeMode: '',
-  title: 'Recomendados'
+  title: 'Recomendados',
+  closeLogin: false
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -121,6 +123,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         title: action.payload,
       };
+      case CLOSE_LOGIN:
+        return {
+          ...state,
+          closeLogin: action.payload,
+        };
       
     default:
       return state;

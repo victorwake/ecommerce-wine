@@ -168,3 +168,12 @@ export const getTitle = payload => {
 
 export const TITLE = 'TITLE';
 /*----------------------------------------------*/
+
+/*----------------------------------------------*/
+
+export const loginClose = payload => {
+  return dispatch => {
+    dispatch({ type: CLOSE_LOGIN, payload })
+  }
+}
+export const CLOSE_LOGIN = 'CLOSE_LOGIN'

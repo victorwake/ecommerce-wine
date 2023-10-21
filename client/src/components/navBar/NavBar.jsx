@@ -6,6 +6,7 @@ import style from "./navbar.module.css";
 import Hamburguer from "../../assets/svgComponents/hamburguer";
 import Flecha from "../../assets/svgComponents/flecha";
 import SearchBar from "../searchBar/SearchBar";
+import Login from '../loginAndRegister/Login.jsx'
 import { isOpenNavBar, 
   openList, 
   getWineType, 
@@ -19,7 +20,8 @@ import { isOpenNavBar,
   clearExperience,
   changeSearchWine,
   getTheme,
-  getTitle 
+  getTitle,
+  loginClose
 } from "../../redux/action/index";
 
 
@@ -37,6 +39,11 @@ export default function NavBar() {
   const btnWwineType = useSelector((state) => state.wineBtnType)
   const experiences = useSelector((state) => state.experience)
   const getMode = useSelector((state) => state.themeMode)
+  const closeLogin = useSelector((state) => state.closeLogin)
+
+  const handleLoginOpen = () => {
+    dispatch(loginClose(true))
+  };
 
   const toggleTheme = () => {
       const body = document.body;
@@ -168,7 +175,10 @@ export default function NavBar() {
             <button onClick={experience} value="">{t("nav.6")}</button>
           </li>
           <li className={style.nav_li}>
-            <button>{t("nav.7")}</button>
+            <button onClick={handleLoginOpen}>{t("nav.7")}</button>
+            {closeLogin&& (
+        <Login />
+      )}
           </li>
         </ul>
         <div className={isOpen ? style.card : style.menu_close_bottom}>
