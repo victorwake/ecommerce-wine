@@ -26,11 +26,11 @@
 //▒▒▒▒__▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓ 
 //▒▒▒__▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 //▒▒
-const server = require('././src/server');
-// const { connect } = require('./src/db.js');
+import server from './server';
+import connect  from './db'
 
 async function startServer() {
-    // await connect();
+    await connect();
 
     server.listen(3001, () => {
         console.log('Server is listening at port 3001');

@@ -1,6 +1,6 @@
-const { Router } = require('express');
 const router = Router();
-const { getDbExp } = require('../../controllers/experience/experienceControlers')
+import{ Router } from 'express';
+import { getDbExp } from '../../controllers/experience/experienceControlers';
 
 
 router.get('/experience', getDbExp);

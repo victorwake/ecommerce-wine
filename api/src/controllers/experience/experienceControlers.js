@@ -1,4 +1,4 @@
-const experience = require("../../data/expDb.json");
+import experience from "../../data/expDb.json";
 
 const getDbExp = async (req, res, next) => {
     try {

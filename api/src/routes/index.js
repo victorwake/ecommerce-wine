@@ -1,16 +1,15 @@
-const { Router } = require('express');
+import { Router } from 'express';
 const router = Router();
-const  test= require('./testRoutes');
-const  Products= require('./productsRoutes.js');
-const getWines = require('./wine/wineJsonRoutes')
-const getExp= require('./experience/experienceRoutes')
+import getWines from './wine/wineJsonRoutes';
+import getExp from './experience/experienceRoutes';
+import WineDb from './wine/winesRoutes';
 
 
 
-router.use('/', test);
-router.use('/', Products);
+
 router.use('/', getWines);
 router.use('/', getExp);
+router.use('/', WineDb)
 
 
 module.exports = router;
