@@ -82,10 +82,12 @@ let winesRender = useMemo(() => {
 
   return (
     <div className={style.container_wines}>
-   {closeLogin&& (
+  
+    <div className={style.container_h2}>
+    {closeLogin&& (
         <Login />
       )}
-    <div className={style.container_h2}><h2>
+    <h2>
     {title} 
     
     </h2></div>
