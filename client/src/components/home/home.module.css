@@ -5,6 +5,9 @@
 .container_wines{
   /* background: var(--bg-color);
   color:var(--text-color); */
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .container_h2{

@@ -1,6 +1,6 @@
-// const { Router } = require('express');
-// const router = Router();
+const router = Router();
+import { Router } from 'express';
 
 
 
-// module.exports = router;
+export default router;

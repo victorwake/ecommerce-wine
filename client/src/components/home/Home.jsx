@@ -1,11 +1,12 @@
 // import style from "./home.module.css";
 import Card from "../card/Card";
 import { useDispatch, useSelector  } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { getWines, changeSearchWine, clearWineByName, getTheme } from "../../redux/action/index";
 import Loading from '../../util/Loading'
 import style from './home.module.css'
 import CardExp from "../experience/CardExp"
+import Login from '../loginAndRegister/Login.jsx'
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -18,20 +19,20 @@ export default function Home() {
   const navInicioActive = useSelector((state) => state.navInicio);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [randomWines, setRandomWines] = useState([]);
+  const closeLogin = useSelector((state) => state.closeLogin)
 
   // let notFound = false;
   // if (searchWine && wineByName.length === 0) {
   //   notFound = true;
   // }
 
-  let winesRender = [];
+let winesRender = useMemo(() => {
   if (searchWine) {
-    winesRender = wineByName;
+    return wineByName;
   } else {
-    winesRender = allWines;
+    return allWines;
   }
-
-  
+}, [searchWine, wineByName, allWines]);
 
   useEffect(() => {
     if (!allWines.length) dispatch(getWines());
@@ -43,6 +44,7 @@ export default function Home() {
       body.classList.add("light");
       dispatch(getTheme('light'))  
     }
+    // eslint-disable-next-line
   }, []);
 
 
@@ -80,9 +82,14 @@ export default function Home() {
 
   return (
     <div className={style.container_wines}>
+   {closeLogin&& (
+        <Login />
+      )}
     <div className={style.container_h2}><h2>
     {title} 
+    
     </h2></div>
+    
     <div className={style.box_wines}>
       {imagesLoaded ? (
         wineType && wineType.length > 0 && wineByName.length < 1 ? (
@@ -103,12 +110,8 @@ export default function Home() {
             experiencies.map((e) => (
               <div key={e.id}>
                 <CardExp
-                  // className={style.card_wines}
                   name={e.name}
-                  // varietal={e.kindOfExp}
                   image={e.image}
-                  // winery={e.url}
-                  // price={`$${e.price}`}
                 />
               </div>
             ))

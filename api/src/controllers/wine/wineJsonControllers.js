@@ -1,4 +1,4 @@
-const winesJson = require("../../data/winesDb.json");
+import winesJson from "../../data/winesDb.json";
 
 const getDbWines = async (req, res, next) => {
   try {

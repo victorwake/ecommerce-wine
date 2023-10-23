@@ -1,4 +1,4 @@
-// eslint-disable-next-line
+
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -6,7 +6,6 @@ import style from "./navbar.module.css";
 import Hamburguer from "../../assets/svgComponents/hamburguer";
 import Flecha from "../../assets/svgComponents/flecha";
 import SearchBar from "../searchBar/SearchBar";
-import Login from '../loginAndRegister/Login.jsx'
 import { isOpenNavBar, 
   openList, 
   getWineType, 
@@ -39,7 +38,6 @@ export default function NavBar() {
   const btnWwineType = useSelector((state) => state.wineBtnType)
   const experiences = useSelector((state) => state.experience)
   const getMode = useSelector((state) => state.themeMode)
-  const closeLogin = useSelector((state) => state.closeLogin)
 
   const handleLoginOpen = () => {
     dispatch(loginClose(true))
@@ -122,6 +120,7 @@ export default function NavBar() {
 
   useEffect(() => {
     verificaThema()
+    // eslint-disable-next-line
   }, [toggleTheme]);
 
 
@@ -176,9 +175,6 @@ export default function NavBar() {
           </li>
           <li className={style.nav_li}>
             <button onClick={handleLoginOpen}>{t("nav.7")}</button>
-            {closeLogin&& (
-        <Login />
-      )}
           </li>
         </ul>
         <div className={isOpen ? style.card : style.menu_close_bottom}>
