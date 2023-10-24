@@ -1,6 +1,6 @@
 import experience from "../../data/expDb.json";
 
-const getDbExp = async (req, res, next) => {
+const getJsonExp = async (req, res, next) => {
     try {
       res.status(200).send(experience);
     } catch (err) {
@@ -8,4 +8,4 @@ const getDbExp = async (req, res, next) => {
     }
   };
 
-module.exports = { getDbExp };
+module.exports = { getJsonExp };

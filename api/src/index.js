@@ -28,8 +28,10 @@
 //▒▒
 import server from './server';
 import connect  from './db'
+//import initializeDatabase from './initScripts/initializeDatabase'
 
 async function startServer() {
+    //await initializeDatabase();
     await connect();
 
     server.listen(3001, () => {
